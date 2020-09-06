@@ -1,41 +1,41 @@
 module Api
     module V1
-        class UsersController < ApplicationController
+        class BussinessController < ApplicationController
             def index
-                users = Bussiness.order('created_at DESC');
-                render json: {status: "SUCCESS", message: "loaded users", data: users},status: :ok
+                bussinesses = Bussiness.order('created_at DESC');
+                render json: {status: "SUCCESS", message: "loaded bussinesses", data: bussinesses},status: :ok
             end
             
-            # def show
-            #     user = User.find(params[:id]);
-            #     render json: {status: "SUCCESS", message: "loaded user", data: user},status: :ok
-            # end
+            def show
+                bussiness = Bussiness.find(params[:id]);
+                render json: {status: "SUCCESS", message: "loaded bussiness", data: bussiness},status: :ok
+            end
 
-            # def create
-            #     user = User.new(user_params);
-            #     if user.save 
-            #         render json: {status: "SUCCESS", message: "saved user", data: user},status: :ok
-            #     else
-            #         render json: {status: "ERROR", message: "user not saved", data: user.errors},status: :unprocessable_entity
-            #     end
-            # end
+            def create
+                bussiness = Bussiness.new(bussiness_params);
+                if bussiness.save 
+                    render json: {status: "SUCCESS", message: "saved bussiness", data: bussiness},status: :ok
+                else
+                    render json: {status: "ERROR", message: "bussiness not saved", data: bussiness.errors},status: :unprocessable_entity
+                end
+            end
 
-            # def destroy
-            #     user = User.find(params[:id])
-            #     user.destroy
-            #     render json: {status: "SUCCESS", message: "deleted user", data: user},status: :ok
-            # end
+            def destroy
+                business = Bussiness.find(params[:id])
+                business.destroy
+                render json: {status: "SUCCESS", message: "deleted business", data: business},status: :ok
+            end
 
-            # def update
-            #     user = User.find(params[:id]);
-            #     if user.update_attributes(user_params)
-            #         render json: {status: "SUCCESS", message: "updated user", data: user},status: :ok
-            #     else
-            #         render json: {status: "ERROR", message: "user not updated", data: user.errors},status: :unprocessable_entity
-            #     end
-            # end
+            def update
+                bussiness = Bussiness.find(params[:id]);
+                if bussiness.update_attributes(bussiness_params)
+                    render json: {status: "SUCCESS", message: "updated bussiness", data: bussiness},status: :ok
+                else
+                    render json: {status: "ERROR", message: "bussiness not updated", data: bussiness.errors},status: :unprocessable_entity
+                end
+            end
 
-            def user_params
+            def bussiness_params
                 params.permit(:name, :password)
             end
         end

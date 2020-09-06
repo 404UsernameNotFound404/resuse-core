@@ -11,4 +11,8 @@
         name: Faker::Name.name,
         password: Faker::Name.name
     })
+    Bussiness.create({
+        name: Faker::Name.name,
+        password: Faker::Name.name
+    })
     end
